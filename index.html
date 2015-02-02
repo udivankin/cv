@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- Спасибо, что заглянули! Скрипт был сгенерирован ~ за 3 часа с использованием Bootstrap, Google Chrome и Netbeans -->
-<html lang="ru">
+<!-- Спасибо, что заглянули! Скрипт был сгенерирован ~ за 3 часа с использованием Bootstrap, AngularJS, Google Chrome DevTools и Netbeans -->
+<html lang="ru" ng-app="cvApp">
     <head>
         <meta charset="utf-8">
         <title>Алекей Удиванкин - Web Developer CV</title>
@@ -9,11 +9,13 @@
         <meta name="author" content="">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/styles.css">
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+        <script src="//code.angularjs.org/1.3.11/i18n/angular-locale_ru.js"></script>
     </head>
 
-    <body>
+    <body ng-controller="CvCtrl">
 
-        <div class="container">
+        <div class="container" ng-cloak>
 
             <div class="greeting">
                 <h1>Алексей Удиванкин</h1>
@@ -26,7 +28,7 @@
             <div class="row cvsection">
                 <div class="col-sm-2"><span class="label label-primary">О себе</span></div>
                 <div class="col-sm-10">
-                    <p><strong>Возраст:</strong> 31 год (20 февраля 1983)</p>
+                    <p><strong>Возраст:</strong> {{calculateAge()}} год ({{model.birthday.getTime() | date:'mediumDate'}})</p>
                     <p><strong>Место:</strong> Россия, г.Самара (готов к переезду)</p>
                 </div>
             </div>
@@ -42,100 +44,32 @@
             <div class="row cvsection">
                 <div class="col-sm-2"><span class="label label-primary">Ключевые навыки</span></div>
                 <div class="col-sm-10">
-                    <p><strong>IT-энтузиаст</strong> с опытом работы PHP-программистом, дизайнером, Sharepoint-разработчиком, менеджером проектов</p>
+                    <p><strong>IT-энтузиаст</strong> с опытом работы разработчиком интерфейсов, PHP-программистом, Sharepoint-разработчиком, менеджером проектов</p>
                     <p><strong>Стрессоустойчив</strong>: чем выше сложность проекта, тем выше моя мотивация и производительность</p>
                     <p><strong>Достойный член команды:</strong> контактный, учитываю конструктивную критику, легко обучаем</p>
 
                     <p class="cvspacer"><span class="label label-default">Языки</span></p>
 
-                    <div class="row">
-                        <div class="col-sm-4">PHP</div>
+                    <div class="row" ng-repeat="item in model.experience.languages">
+                        <div class="col-sm-4" ng-bind="item.label"></div>
                         <div class="col-sm-8">
                             <div class="progress">
-                                <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 60%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">JavaScript, JSP</div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" style="width: 60%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">HTML5, CSS3</div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">SQL, MySQL, MSSQL, SQLite</div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" style="width: 70%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">ASP.Net</div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" style="width: 30%;"></div>
+                                <div class="progress-bar progress-bar-success" ng-class="item.active && 'active progress-bar-striped'" aria-valuenow="{{item.ratio}}" aria-valuemin="0" aria-valuemax="100" style="width: {{item.ratio}}%;">
+                                    <span class="sr-only">{{item.ratio}}%</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <p class="cvspacer"><span class="label label-default">Инструменты и др. ПО</span></p>
 
-                    <div class="row">
-                        <div class="col-sm-4">NetBeans</div>
+                    <div class="row" ng-repeat="item in model.experience.tools">
+                        <div class="col-sm-4" ng-bind="item.label"></div>
                         <div class="col-sm-8">
                             <div class="progress">
-                                <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 25%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">Adobe Photoshop</div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-info" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">Adobe Illustrator</div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-info" style="width: 40%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">MS Visual Studio / ASP.Net / Sharepoint</div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-info" style="width: 33%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">LAMP с нуля, Apache, nginx</div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-info" style="width: 60%;"></div>
+                                <div class="progress-bar progress-bar-info" ng-class="item.active && 'active progress-bar-striped'" aria-valuenow="{{item.ratio}}" aria-valuemin="0" aria-valuemax="100" style="width: {{item.ratio}}%;">
+                                    <span class="sr-only">{{item.ratio}}%</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -144,9 +78,14 @@
                         <div class="col-sm-4">Windows / Mac / Linux</div>
                         <div class="col-sm-8">
                             <div class="progress">
-                                <div class="progress-bar-parted">
-                                    <div class="barpartpart-green" style="width: 59%;" title="Windows - 60% времени"></div>
-                                    <div class="barpartpart-blue" style="width: 35%;" title="Mac - 35% времени"></div><div class="barpartpart-red" style="width: 5%;" title="Linux - 5% времени"></div>
+                                <div class="progress-bar progress-bar-success" style="width: 59%">
+                                    <span class="sr-only">Windows - 60% времени</span>
+                                </div>
+                                <div class="progress-bar progress-bar-info" style="width: 35%">
+                                    <span class="sr-only">Mac - 35% времени</span>
+                                </div>
+                                <div class="progress-bar progress-bar-warning" style="width: 6%">
+                                    <span class="sr-only">Linux - 5% времени</span>
                                 </div>
                             </div>
                         </div>
@@ -154,48 +93,13 @@
 
                     <p class="cvspacer"><span class="label label-default">Фреймворки</span></p>
 
-                    <div class="row">
-                        <div class="col-sm-4">jQuery, jQuery UI, jQuery Mobile</div>
+                    <div class="row" ng-repeat="item in model.experience.frameworks">
+                        <div class="col-sm-4" ng-bind="item.label"></div>
                         <div class="col-sm-8">
                             <div class="progress">
-                                <div class="progress-bar progress-bar-danger progress-bar-striped active" style="width: 75%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">CMS/CMF: WolfCMS, Wordpress, <a href="#" class="cvtooltip" rel="tooltip" title="LiveStreet,
-                                                                              UMI.CMS, Drupal, Joomla, MediaWiki, VBulletin, IPBoard, Opencart, Magento">etc</a></div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-danger progress-bar-striped active" style="width: 70%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">CodeIgniter</div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-danger" style="width: 33%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">YII</div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-danger progress-bar-striped active" style="width: 20%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4">Bootstrap, 960gs</div>
-                        <div class="col-sm-8">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-danger progress-bar-striped active" style="width: 80%;"></div>
+                                <div class="progress-bar progress-bar-danger" ng-class="item.active && 'active progress-bar-striped'" aria-valuenow="{{item.ratio}}" aria-valuemin="0" aria-valuemax="100" style="width: {{item.ratio}}%;">
+                                    <span class="sr-only">{{item.ratio}}%</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -388,14 +292,6 @@
                 <div class="col-sm-10">
                     <p><strong>Английский:</strong> выше среднего, читаю и пишу технические тексты, могу проходить интервью.</p>
                     <p><strong>Немецкий:</strong> читаю профессиональную литературу, понимаю разговорную речь.</p>
-                </div>
-            </div>
-
-            <div class="row cvsection">
-                <div class="col-sm-10 col-sm-offset-2">
-                    <p class="download-print">
-                        <a href="#" onclick="window.print();return false;" class="btn btn-default">Распечатать</a>
-                    </p>
                 </div>
             </div>
 
