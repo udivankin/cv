@@ -36,7 +36,7 @@ cvApp.controller('CvCtrl', function ($scope) {
         recentWorks: [
             {
                 title: {
-                    ru: 'фициальный сайт известного hip-hop исполнителя Смоки Мо',
+                    ru: 'Официальный сайт известного hip-hop исполнителя Смоки Мо',
                     en: 'Offical website for famous Russian hip-hop artist - Smoky Mo'
                 },
                 image: 'smokymo.jpg',
