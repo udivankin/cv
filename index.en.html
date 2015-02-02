@@ -145,114 +145,20 @@
                     <div id="cv-carousel" class="carousel slide" data-ride="carousel">
 
                         <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-slide-to="{{$index}}"
+                                data-target="#cv-carousel"
+                                ng-repeat="item in model.recentWorks"
+                                ng-class="$first && 'active'">
+                            </li>
                         </ol>
 
                         <div class="carousel-inner" role="listbox">
 
-                            <div class="active item">
-                                <img src="slides/smokymo.jpg" alt="">
+                            <div class="item" ng-repeat="item in model.recentWorks" ng-class="$first && 'active'">
+                                <img src="slides/{{item.image}}" alt="{{item.title.en}}">
                                 <div class="carousel-caption">
-                                    <h4>Offical website for famous Russian hip-hop artist - Smoky Mo - <a href="http://smokymo.ru">smokymo.ru</a></</h4>
-                                    <p>WolfCMS, CSS3+HTML5, CMF module developement, SEO</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/wellness.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>Website for the Wellness center - <a href="http://wellness.mega-samara.ru">wellness.mega-samara.ru</a></h4>
-                                    <p>WolfCMS, CSS3+HTML5, jQuery.</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/viktorco.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>Intranet portal</h4>
-                                    <p>Sharepoint 2007, ASP.Net, MSSQL, jQuery, design, CSS3, misc. data sources (MSSQL, MySQL, XML, JSON).</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/helpdesk.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>Intranet helpdesk</h4>
-                                    <p>Sharepoint 2007, ASP.Net, MSSQL, jQuery, design, CSS3, workflow software &laquo;DocsVision&raquo; integration.</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/workspace1.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>Senior management web-portal</h4>
-                                    <p>YII + jQuery Mobile developement, CSS3 + HTML5, design.</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/workspace2.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>Senior management web-portal</h4>
-                                    <p>Data sources: MSSQL, MySQL, XML, JSON, LDAP authentication provider, workflow software &laquo;DocsVision&raquo; integration.</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/ukushu.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>Photo blog <a href="http://www.ukushu.com">ukushu.com</a></h4>
-                                    <p>Forked the opensource script Pixelpost: XHTML+CSS template, migrate from Prototype to jQuery, PHP refactoring ratio ~ 50%</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/polones.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>Website for photo studio</h4>
-                                    <p>WolfCMS, CSS3+HTML5 верстка, дизайн.</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/pik.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>Corporate website - <a href="http://www.pik-samara.ru">pik-samara.ru</a></h4>
-                                    <p>WolfCMS, CSS+XHTML верстка, дизайн.</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/goldsgym.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>Website for fitness center - <a href="http://goldsgym.mega-samara.ru">goldsgym.mega-samara.ru</a></h4>
-                                    <p>WolfCMS, CSS+XHTML верстка, дизайн.</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/deeplook.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>Website for an innovative motion design studio - <a href="http://deeplook.ru">deeplook.ru</a></h4>
-                                    <p>WolfCMS, CSS3+HTML5, jQuery, SEO</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/aquapark.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>Website for the largest aqua park in Volga`s region - <a href="http://aquapark-samara.ru">aquapark-samara.ru</a></h4>
-                                    <p>WolfCMS, CSS+XHTML, jQuery.</p>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <img src="slides/issa.jpg" alt="">
-                                <div class="carousel-caption">
-                                    <h4>CRM for leaseholders</h4>
-                                    <p>CodeIgniter, design, CSS+XHTML, MySQL, jQuery, data exchange w / 1C (the most common accounting software in Russia) and MSSQL</p>
+                                    <h4 ng-bind="item.title.en"></h4>
+                                    <p ng-bind-html-unsafe="item.desc.en"></p>
                                 </div>
                             </div>
 
