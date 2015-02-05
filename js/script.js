@@ -15,22 +15,23 @@ cvApp.controller('CvCtrl', function ($scope) {
             ],
             tools: [
                 {label: 'NetBeans', active: true, ratio: '70'},
+                {label: 'git (GitHub, Bitbucket)', active: true, ratio: '60'},
                 {label: 'Adobe Photoshop', active: false, ratio: '80'},
                 {label: 'MS Visual Studio', active: false, ratio: '30'},
-                {label: 'git (GitHub, Bitbucket)', active: true, ratio: '60'},
                 {label: 'kanban, CI, Scrum', active: true, ratio: '50'},
                 {label: 'StackOverflow', active: true, ratio: '99'}
             ],
             frameworks: [
-                {label: 'jQuery', active: false, ratio: '75'},
                 {label: 'AngularJS', active: true, ratio: '60'},
+                {label: 'jQuery', active: false, ratio: '75'},
+                {label: 'Web Components', active: true, ratio: '30'},
                 {label: 'Node.Js', active: true, ratio: '55'},
-                {label: 'CMS/CMF: WolfCMS, Wordpress, Drupal', active: false, ratio: '50'},
+                {label: 'CMS/CMF: Wordpress, Drupal', active: false, ratio: '50'},
                 {label: 'CodeIgniter', active: false, ratio: '40'},
                 {label: 'YII', active: true, ratio: '75'},
                 {label: 'Laravel', active: true, ratio: '25'},
                 {label: 'Bootstrap, Foundation', active: true, ratio: '70'},
-                {label: 'SASS (Compass, Kraken, Furatto)', active: true, ratio: '30'}
+                {label: 'SASS (Compass, Kraken, Furatto)', active: false, ratio: '30'}
             ]
         },
         recentWorks: [
